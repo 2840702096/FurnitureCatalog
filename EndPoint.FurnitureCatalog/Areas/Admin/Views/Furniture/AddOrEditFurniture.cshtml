@@ -1,0 +1,33 @@
+﻿@using FurnitureCatalog.Application.Services.Furnitures.Command.AddOrEditFurniture;
+@model AddOrEditFurnitureServiceInputDto
+
+<form asp-controller="Furniture" asp-action="AddOrEditFurniture" data-ajax="true" data-ajax-method="post" data-ajax-success="AddOrEditFurnitureResult(data)" style="text-align:right" id="AddOrEditFurnitureForm" enctype="multipart/form-data" method="post">
+    <input type="hidden" value="@ViewBag.Id" asp-for="@Model.EditId" />
+    <div class="form-group">
+        <label class="col-form-label pt-0">نام</label>
+        <input asp-for="Name" class="form-control" type="text">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label pt-0">گروه</label>
+        <select asp-for="CategoryId"
+                class="form-control" asp-items="@ViewBag.Categories">
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label pt-0">تصویر</label>
+        <button type="button"
+                style="display:block;width:120px; height:30px;border: 1px solid;border-radius: 3px;"
+                onclick="document.getElementById('getFile').click()">
+            بارگذاری تصویر
+        </button>
+        <input type="file" class="image" id="getFile" style="display:none"
+               asp-for="Image">
+        <span class="text-danger" asp-validation-for="Image"></span>
+    </div>
+    <div class="form-group mb-0">
+        <div class="product-buttons text-center">
+            <button type="submit" class="btn btn-info">ذخیره</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,210 @@
+﻿@model FurnitureCatalog.Application.Services.Furnitures.Command.AddSpecification.AddSpecificationServiceInputDto
+
+<div class="page-body">
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            توضیحات مبلمان
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Index"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">مبلمان</li>
+                        <li class="breadcrumb-item active">
+                            توضیحات مبلمان
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> افزودن توضیح</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="AddDescriptions" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" asp-for="FurnitureId" value="@ViewBag.FurnitureId" />
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">عنوان توضیح</label>
+                                    <select asp-for="STitleId"
+                                            class="form-control" asp-items="@ViewBag.DescriptionTitles">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>متن توضیح</label>
+                                    <textarea asp-for="Value" class="form-control" type="text"></textarea>
+                                    <span class="text-danger" asp-validation-for="Value"></span>
+                                </div>
+                                <div style="margin-top:30px" class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <a href="/Admin/Furnitures" class="btn btn-light">بازگشت</a>
+                                        <button type="submit" class="btn btn-info">ذخیره</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>
+                            توضیحات
+                        </h5>
+                    </div>
+                    <div style="overflow-y:auto; max-height:313px; min-height:313px;" class="card-body">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer mt-3"
+                               id="dataTables-example" aria-describedby="dataTables-example_info">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 300px;">عنوان توضیح</th>
+                                    <th class="text-center" style="width: 300px;">متن توضیح</th>
+                                    <th class="text-center">دستورات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.Descriptions)
+                                {
+                                    <tr>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <label>@item.DescriptionTitle.Name</label>
+                                        </td>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <a style="color:white ;display:flex; flex-direction:column; margin:4px" onclick="ObserveDescription(@item.Id)"
+                                               class="btn btn-dark btn-sm">
+                                                مشاهده ی متن
+                                            </a>
+                                        </td>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <a onclick="DeleteDescription(@item.Id, @ViewBag.FurnitureId)">
+                                                <i style="color:red; font-size:155%" class="fa fa-trash">
+
+                                                </i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts
+{
+    <script>
+        function DeleteDescription(id, furnitureId) {
+            var PostData = {
+                'id': id
+            };
+
+            swal.fire({
+                title: 'حذف',
+                text: "آیا از حذف مطمعا هستید؟",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله ',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Admin/DeleteDescription',
+                        data: PostData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire({
+                                    title: data.title,
+                                    text: data.message,
+                                    icon: data.icon,
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'باشه'
+                                }).then(function (isConfirm) {
+                                    location.replace("/Admin/FurnitureDescriptions/" + furnitureId);
+                                });
+                            }
+                            else {
+                                swal.fire({
+                                    title: data.title,
+                                    text: data.message,
+                                    icon: data.icon,
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'باشه'
+                                });
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+
+                    });
+
+                }
+            })
+        }
+
+        function ObserveDescription(id){
+            var PostData = {
+                id: id
+            };
+
+            $.ajax({
+                url: "/Admin/ShowDescription",
+                type: "Get",
+                data: PostData,
+                success: function (result) {
+                    $('#ModalBody').html(result);
+
+                    $('#ModalTitle').html('متن توضیح');
+
+                    $('#Main').modal('show');
+                },
+                error: function () {
+
+                }
+            });
+        }
+    </script>
+}
+
+@section Modals {
+    <div class="modal fade text-right" id="Main" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle"></h5>
+                </div>
+                <div class="modal-body" id="ModalBody">
+                </div>
+            </div>
+        </div>
+    </div>
+}

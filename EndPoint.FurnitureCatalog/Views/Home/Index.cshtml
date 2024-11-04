@@ -1,0 +1,51 @@
+﻿<main>
+
+    <!-- ==================== Start Slider ==================== -->
+
+    <header class="slider showcase-full">
+        <div class="swiper-container parallax-slider">
+            <div class="swiper-wrapper">
+                @foreach (var Item in ViewBag.Furniture)
+                {
+                    <div class="swiper-slide">
+                        <div class="bg-img valign" data-background="/admin/images/furnitureimages/@Item.Image" data-overlay-dark="3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-11 offset-lg-1">
+                                        <div class="caption">
+                                            <h1>
+                                                <a href="project-details1.html">
+                                                    <span data-swiper-parallax="-2000">@Item.Name</span>
+                                                </a>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- slider setting -->
+            <div class="slider-contro">
+                <div class="swiper-button-prev swiper-nav-ctrl cursor-pointer">
+                    <div><i class="fas fa-chevron-right"></i></div>
+                    <div>
+                        <span>اسلاید قبل</span>
+                    </div>
+                </div>
+                <div class="swiper-button-next swiper-nav-ctrl cursor-pointer">
+                    <div>
+                        <span>اسلاید بعد</span>
+                    </div>
+                    <div><i class="fas fa-chevron-left"></i></div>
+                </div>
+            </div>
+            <div class="swiper-pagination dots"></div>
+        </div>
+    </header>
+
+    <!-- ==================== End Slider ==================== -->
+
+</main>

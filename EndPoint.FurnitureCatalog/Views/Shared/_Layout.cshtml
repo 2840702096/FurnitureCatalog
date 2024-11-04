@@ -1,0 +1,297 @@
+﻿<html lang="fa">
+<head>
+    <!-- Metas -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="HTML5 Template Geekfolio Multi-Purpose">
+    <meta name="description" content="Geekfolio - Multi-Purpose HTML5 Template">
+    <meta name="author" content="">
+
+    <!-- Title  -->
+    <title>Geekfolio</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/Client/imgs/favicon.ico">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/Client/css/plugins.css">
+
+    <!-- Core Style Css -->
+    <link rel="stylesheet" href="/Client/css/style.css">
+
+    @await RenderSectionAsync("Link", required: false);
+</head>
+
+<body>
+
+    <!-- ==================== Start Loading ==================== -->
+
+    <div class="loader-wrap">
+        <svg viewbox="0 0 1000 1000" preserveaspectratio="none">
+            <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+
+        <div class="loader-wrap-heading">
+            <div class="load-text">
+                <span>در حال آماده سازی</span>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== End Loading ==================== -->
+
+    <div class="cursor"></div>
+
+    <!-- ==================== Start progress-scroll-button ==================== -->
+
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
+    </div>
+
+    <!-- ==================== End progress-scroll-button ==================== -->
+    <!-- ==================== Start Navgition ==================== -->
+
+    <div id="navi" class="topnav">
+        <div class="container">
+            <div class="logo icon-img-120">
+                <a href="#0"><img src="/Client/imgs/logo-light.png" alt=""></a>
+            </div>
+            <div class="menu-icon cursor-pointer">
+                <span class="icon">
+                    <i></i>
+                    <i></i>
+                </span>
+                <span class="text"><span class="word">منو</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hamenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="menu-text">
+                        <div class="text">
+                            <h2>منو</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="menu-links">
+                        <ul class="main-menu rest">
+                            <li>
+                                <div class="o-hidden">
+                                    <div class="link cursor-pointer dmenu"><span class="fill-text" data-text="خانه">خانه</span> <i></i></div>
+                                </div>
+                                <div class="sub-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="home-corporate.html" class="sub-link">شرکتی</a>
+                                        </li>
+                                        <li>
+                                            <a href="home-onepage.html" class="sub-link">تک صفحه ای</a>
+                                        </li>
+                                        <li>
+                                            <a href="home-digital-agency.html" class="sub-link">آژانس دیجیتال</a>
+                                        </li>
+                                        <li>
+                                            <a href="home-freelancer.html" class="sub-link">فریلنسر</a>
+                                        </li>
+                                        <li>
+                                            <a href="home-marketing-agency.html" class="sub-link">آژانس بازاریابی</a>
+                                        </li>
+                                        <li>
+                                            <a href="home-creative-agency.html" class="sub-link">آژانس خلاق</a>
+                                        </li>
+                                        <li>
+                                            <a href="home-startup.html" class="sub-link">استارتاپ</a>
+                                        </li>
+                                        <li>
+                                            <a href="home-architecture.html" class="sub-link">معماری</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="o-hidden">
+                                    <a href="page-about.html" class="link"><span class="fill-text" data-text="درباره ما">درباره ما</span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="o-hidden">
+                                    <div class="link cursor-pointer dmenu">
+                                        <span class="fill-text" data-text="صفحات">صفحات</span> <i></i>
+                                    </div>
+                                </div>
+                                <div class="sub-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="page-services.html" class="sub-link">خدمات</a>
+                                        </li>
+                                        <li>
+                                            <a href="page-team.html" class="sub-link">تیم ما</a>
+                                        </li>
+                                        <li>
+                                            <a href="page-contact.html" class="sub-link">ارتباط با ما</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="o-hidden">
+                                    <div class="link cursor-pointer dmenu">
+                                        <span class="fill-text" data-text="ویترین">ویترین</span> <i></i>
+                                    </div>
+                                </div>
+                                <div class="sub-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="showcase-parallax-slider.html" class="sub-link">
+                                                اسلایدر
+                                                پارالاکس
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="showcase-frame-slider.html" class="sub-link">اسلایدر فریم</a>
+                                        </li>
+                                        <li>
+                                            <a href="showcase-circle-slider.html" class="sub-link">اسلایدر دایره ای</a>
+                                        </li>
+                                        <li>
+                                            <a href="showcase-carousel.html" class="sub-link">
+                                                ویترین Carousel
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="showcase-interactive-center-horizontal.html" class="sub-link">
+                                                لینک
+                                                اینتراکتیو 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="showcase-interactive-center.html" class="sub-link">
+                                                لینک اینتراکتیو
+                                                2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="showcase-parallax.html" class="sub-link">پارالاکس عمودی</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="o-hidden">
+                                    <div class="link cursor-pointer dmenu">
+                                        <span class="fill-text" data-text="نمونه کار">نمونه کار</span> <i></i>
+                                    </div>
+                                </div>
+                                <div class="sub-menu">
+                                    <ul>
+                                        <li>
+                                            <a class="sub-link" href="portfolio-grid-2.html">شبکه ای دو ستونه</a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-link" href="portfolio-modern.html">شبکه ای مدرن</a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-link" href="portfolio-metro.html">مترو</a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-link" href="project-details1.html">جزئیات نمونه کار 1</a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-link" href="project-details2.html">جزئیات نمونه کار 2</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="o-hidden">
+                                    <div class="link cursor-pointer dmenu">
+                                        <span class="fill-text" data-text="وبلاگ">وبلاگ</span> <i></i>
+                                    </div>
+                                </div>
+                                <div class="sub-menu">
+                                    <ul>
+                                        <li>
+                                            <a class="sub-link" href="blog-classic.html">وبلاگ استاندارد</a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-link" href="blog-list.html">لیست</a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-link" href="blog-half-img.html">عکس خارج از فریم</a>
+                                        </li>
+                                        <li>
+                                            <a class="sub-link" href="blog-details.html">جزئیات وبلاگ</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="o-hidden">
+                                    <a href="page-contact.html" class="link"><span class="fill-text" data-text="ارتباط با ما">ارتباط با ما</span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-flex align-items-end">
+                    <div class="cont-info full-width">
+                        <div class="item">
+                            <h5 class="mb-15">در تماس باشید</h5>
+                            <p>ایران، تهران، سعادت آباد</p>
+                            <p class="underline main-color mt-5 mb-5"><a href="#0">12 32 123 0912</a></p>
+                            <p><a href="#0" class="link">GeekFolio@GeekFolio.com</a></p>
+                        </div>
+                        <div class="search-form">
+                            <div class="form-group">
+                                <input type="text" name="search" placeholder="جستجو">
+                                <button><span class="pe-7s-search"></span></button>
+                            </div>
+                        </div>
+                        <ul class="rest social-text d-flex mt-50 fz-13">
+                            <li class="mr-20">
+                                <a href="#0" class="hover-this"><span class="hover-anim">Facebook</span></a>
+                            </li>
+                            <li class="mr-20">
+                                <a href="#0" class="hover-this"><span class="hover-anim">Twitter</span></a>
+                            </li>
+                            <li class="mr-20">
+                                <a href="#0" class="hover-this"><span class="hover-anim">LinkedIn</span></a>
+                            </li>
+                            <li>
+                                <a href="#0" class="hover-this"><span class="hover-anim">Instagram</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== End Navgition ==================== -->
+
+    @RenderBody()
+    
+    <!-- jQuery --> 
+    <script src="/Client/js/jquery-3.6.0.min.js"></script>
+    <script src="/Client/js/jquery-migrate-3.4.0.min.js"></script>
+
+    <!-- plugins -->
+    <script src="/Client/js/plugins.js"></script>
+
+    <script src="/Client/js/ScrollTrigger.min.js"></script>
+
+    <!-- custom scripts -->
+    <script src="/Client/js/scripts.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false);
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿@model FurnitureCatalog.Application.Services.Categories.Query.GetSpecificationTitles.SpecificationTitlesDto
+
+<div class="page-body">
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            عناوین مشخصات گروه
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Index"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">گروه ها</li>
+                        <li class="breadcrumb-item active">
+                            عناوین مشخصات گروه
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> افزودن عنوان</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="AddSpecificationTitles" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" asp-for="CategoryId" value="@ViewBag.CategoryId" />
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>عنوان مشخصه</label>
+                                    <input asp-for="Name" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Name"></span>
+                                </div>
+                                <div style="margin-top:30px" class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <a href="/Admin/Categories" class="btn btn-light">بازگشت</a>
+                                        <button type="submit" class="btn btn-info">ذخیره</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>
+                            عناوین
+                        </h5>
+                    </div>
+                    <div style="overflow-y:auto; max-height:313px; min-height:313px;" class="card-body">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer mt-3"
+                               id="dataTables-example" aria-describedby="dataTables-example_info">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 300px;">عنوان مشخصه</th>
+                                    <th class="text-center">دستورات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.Titles)
+                                {
+                                    <tr>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <label>@item.Name</label>
+                                        </td>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <a onclick="DeleteSpecificationTitle(@item.Id, @item.CategoryId)" style="font-size:25px">
+                                                <i style="color:red" class="fa fa-trash">
+
+                                                </i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts
+{
+    <script>
+        function DeleteSpecificationTitle(id, categoryId) {
+            var PostData = {
+                'id': id
+            };
+
+            swal.fire({
+                title: 'حذف عنوان',
+                text: "آیا از حذف این عنوان مطمعا هستید؟",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله ',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Admin/DeleteSpecificationTitle',
+                        data: PostData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire({
+                                    title: data.title,
+                                    text: data.message,
+                                    icon: data.icon,
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'باشه'
+                                }).then(function (isConfirm) {
+                                    location.replace("/Admin/SpecificationTitles/" + categoryId);
+                                });
+                            }
+                            else {
+
+                                swal.fire({
+                                    title: data.title,
+                                    text: data.message,
+                                    icon: data.icon,
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'باشه'
+                                });
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+
+                    });
+
+                }
+            })
+        }
+    </script>
+}
